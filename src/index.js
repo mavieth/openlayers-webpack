@@ -25,7 +25,6 @@ const log = function (item) {
     window.console.log(item);
 };
 
-
 const inputJson = two_rectangles;
 
 class Thresholder {
@@ -168,15 +167,6 @@ window.onload = () => {
         const flatFeaturesCollection = featureCollection(cs);
         window.flatFeaturesCollection = flatFeaturesCollection;
         log(flatFeaturesCollection)
-        // window.combo = combo;
-        // const total = parseFloat(area(combo)) / 2.0;
-        // log(total)
-        // log(convertArea(total, 'meters', 'kilometers') / 2)
-        // map.getView().fit(drawLayer.getSource().getExtent(), map.getSize())
-        // map.getView().fit(featExtent, map.getSize())
-        // const curZoom = map.getView().getZoom() - 1;
-        // map.getView().setZoom(curZoom)
-
     };
 
 
@@ -236,6 +226,7 @@ window.onload = () => {
             log("Dragging");
         }
     };
+
     map.on('pointermove', pointerMoveHandler);
     window.map = map;
     window.drawLayer = drawLayer;
@@ -272,6 +263,4 @@ window.onload = () => {
             map.getView().setZoom(newZoom)
         }
     });
-
-
 };
