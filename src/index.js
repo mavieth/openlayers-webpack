@@ -62,7 +62,6 @@ class Thresholder {
                 dataProjection: 'EPSG:4326',
                 featureProjection: 'EPSG:3857'
             }).readFeature(ft);
-            log(buffer(feature(olFeature), 5))
             this._vectorSource.addFeature(olFeature);
         });
         return this;
