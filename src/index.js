@@ -248,10 +248,11 @@ window.onload = () => {
             addInteraction()
         }
         // TODO: copy geojson to clipboard
-        // if (event.key === 'x') {
-        //     log(window.flatFeaturesCollection);
-        //     window.prompt("Copy to clipboard: Ctrl+C, Enter", JSON.stringify(window.flatFeaturesCollection));
-        // }
+        if (event.key === 'x') {
+            log(window.flatFeaturesCollection);
+            
+            // window.prompt("Copy to clipboard: Ctrl+C, Enter", JSON.stringify(window.flatFeaturesCollection));
+        }
         if (event.key === 'q') {
             const curZoom = map.getView().getZoom();
             const newZoom = curZoom + 1;
