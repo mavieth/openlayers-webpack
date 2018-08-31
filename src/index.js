@@ -95,7 +95,7 @@ window.onload = () => {
     const keyMappings = {
         isDeleting: false,
         drawStyle: 'box',
-    }
+    };
 
     const drawSource = new VectorSource({
         format: new GeoJSON(),
@@ -142,10 +142,6 @@ window.onload = () => {
         const feat = fmt.readFeatureFromObject(turfpoly);
         const featExtent = feat.getGeometry().getExtent();
 
-        // log(featExtent);
-        // window.lastFeatExtent = featExtent;
-        // window.newExtent = drawLayer.getSource().getExtent();
-
         drawLayer.getSource().forEachFeature(ft => {
             ft.setStyle(new Style({
                 fill: new Fill({
@@ -161,40 +157,8 @@ window.onload = () => {
             })
         }));
 
-        log("deleting: " + keyMappings.isDeleting);
-
-
-        // drawLayer.getSource().forEachFeatureIntersectingExtent(featExtent, function (intersectingFeature) {
-        //     // log('intersecting feature');
-        //     // log(intersectingFeature);
-        //     const intersectingExtent = intersectingFeature.getGeometry().getExtent();
-        //     // log('intersecting extent');
-        //     // log(intersectingExtent);
-        //     //
-        //     // log("New feature extent: ");
-        //     // log(featExtent);
-        //
-        //     log('intersect')
-        //     log(intersect(turf.polygon([featExtent]), turf.polygon([intersectingExtent])))
-        //     log('union')
-        //     log(union(turf.polygon([featExtent]), turf.polygon([intersectingExtent])))
-        //
-        //
-        //     // log(inter);
-        //     // log(featExtent);
-        //     // const p1 = fmt.readFeatureFromObject(turf.polygon([featExtent]).geometry).getGeometry().getCoordinates()
-        //
-        //     // const p2 = fmt.readFeatureFromObject(turf.polygon([inter]).geometry).getGeometry().getCoordinates()
-        //     // // intersecting.push()
-        //     // log('---------------------')
-        //     // log(p1)
-        //     // log(p2)
-        //     // log(intersect(p1, p2))
-        // });
-
+        log("isDeleting: " + keyMappings.isDeleting);
         drawLayer.getSource().addFeature(feat);
-
-
         const combo = combine(fmt.writeFeaturesObject(drawLayer.getSource().getFeatures()));
         let cs = [];
         flattenEach(featureCollection(combo.features), function (currentFeature, featureIndex, multiFeatureIndex) {
@@ -277,7 +241,7 @@ window.onload = () => {
     window.drawLayer = drawLayer;
 
     document.addEventListener('keyup', (event) => {
-        log(event.key)
+        log(event.key);
         if (event.key === 'd') {
             keyMappings.isDeleting = !keyMappings.isDeleting;
             addInteraction()
