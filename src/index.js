@@ -250,7 +250,7 @@ window.onload = () => {
         // TODO: copy geojson to clipboard
         if (event.key === 'x') {
             log(window.flatFeaturesCollection);
-            
+
             // window.prompt("Copy to clipboard: Ctrl+C, Enter", JSON.stringify(window.flatFeaturesCollection));
         }
         if (event.key === 'q') {
@@ -264,4 +264,13 @@ window.onload = () => {
             map.getView().setZoom(newZoom)
         }
     });
+
+    document.addEventListener('keydown', (event) => {
+        log(event.key);
+        if (event.key === 'Shift') {
+            map.removeInteraction(draw)
+        }
+    });
+
+
 };
